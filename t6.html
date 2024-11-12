@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Negra con Imágenes</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-between; /* Distribuye las imágenes a los extremos */
+            width: 80%; /* Ancho del contenedor de imágenes */
+            margin-top: 20px;
+        }
+
+        .image-box {
+            text-align: center;
+            flex: 1; /* Permite que las imágenes se expandan equitativamente */
+        }
+
+        img {
+            width: 150px; /* Ajusta el tamaño de las imágenes */
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .text {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <div class="image-box">
+            <img src="img/imagen1.png" alt="Imagen 1">
+            <div class="text">Lobonoche(Aaron Ribero)</div>
+            <div class="text">es el user de roblox xd</div>
+        </div>
+        <div class="image-box">
+            <img src="img/imagen2.png" alt="Imagen 2">
+            <div class="text">Surlez(alan rodriguez)</div>
+            <div class="text">el mio es un poco raro</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rich roll troll</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 1s;
+            flex-direction: column;
+        }
+
+        .message {
+            opacity: 0;
+            transition: opacity 2s;
+            font-size: 24px;
+            text-align: center;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .tasks-section {
+            display: none;
+            text-align: center;
+        }
+
+        .next-btn, .go-back-btn {
+            font-size: 24px;
+            padding: 15px 30px;
+            color: #ffffff;
+            background-color: #457b9d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .next-btn:hover, .go-back-btn:hover {
+            background-color: #a8dadc;
+        }
+
+        #video-container {
+            display: none; /* Initially hidden */
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: black;
+            justify-content: center;
+            align-items: center;
+        }
+
+        video {
+            width: 120%; /* Increase video size to 150% */
+            max-width: 900px; /* Maximum width */
+            height: auto;
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: white;
+            text-align: center;
+            display: none; /* Initially hidden */
+        }
+
+        .go-back-btn {
+            display: none; /* Initially hidden */
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="message" id="message">You need to turn up the volume or headphones for the next task.</div>
+
+    <section class="tasks-section" id="tasks-section">
+        <button class="next-btn" id="next-btn" onclick="showContent()">Next Task</button>
+    </section>
+
+    <div id="video-container">
+        <video id="video" controls>
+            <source src="img/Rick Astley - Never Gonna Give You Up (Official Music Video).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay-text" id="overlay-text">Fuiste Rick Trolleado, no hay tarea 5, presta atención.</div>
+        <button class="go-back-btn" id="go-back-btn" onclick="goBack()">Go Back</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Mama-Coco. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            const message = document.getElementById('message');
+            message.style.opacity = 1;
+
+            setTimeout(() => {
+                document.querySelector('.tasks-section').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('video-container').style.display = 'flex'; // Show video container
+                    setTimeout(() => {
+                        const video = document.getElementById('video');
+                        video.play(); // Start video playback after 1 second
+                    }, 1000); // Start video after 1 second
+                }, 3000); // Show video container after 3 seconds
+            }, 5000); // Show tasks section after 5 seconds
+
+            setTimeout(() => {
+                document.getElementById('overlay-text').style.display = 'block'; // Show overlay text after 10 seconds
+                document.getElementById('go-back-btn').style.display = 'block'; // Show Go Back button
+            }, 10000); // Show overlay text and button after 10 seconds
+        };
+
+        function showContent() {
+            document.body.style.backgroundColor = "white";
+            document.getElementById('tasks-section').style.display = 'none';
+            document.getElementById('video-container').style.display = 'flex'; // Show video container
+            setTimeout(() => {
+                const video = document.getElementById('video');
+                video.play(); // Start video playback after 1 second
+            }, 1000); // Start video after 1 second
+        }
+
+        function goBack() {
+            window.location.href = "index.html"; // Redirect to index.html
+        }
+    </script>
+</body>
+</html>

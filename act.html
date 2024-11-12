@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebQuest - Persona 3 Reload Edition</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="WebQuest Logo" width="100px">
+            <h1>Scholarship Tasks</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="proceso.html">Process</a></li>
+                <li><a href="recursos.html">Resources</a></li>
+                <li><a href="evaluacion.html">Evaluation</a></li>
+                <li><a href="upload.html">Upload Scores</a></li>
+            </ul>
+    </header>
+
+    <main>
+        <section class="introduction">
+            <h2>Welcome to Scholarship Tasks</h2>
+            <p>1.welcome a scholarship task each page contains 2 tasks with the information of their respective pages</p>
+        </br>
+            <p>2.once you start a task you can't leave until you finish it</p>
+        </section>
+
+        <!-- Script para el audio player -->
+        <script>
+            document.getElementById('play-icon').addEventListener('click', function() {
+                const audio = document.getElementById('audio');
+                const playPath = document.getElementById('play-path');
+
+                if (audio.paused) {
+                    audio.play();
+                    playPath.setAttribute('d', 'M16,8 L16,56 L56,32 Z'); // Cambia a ícono de pausa
+                } else {
+                    audio.pause();
+                    playPath.setAttribute('d', 'M16,8 L56,32 L16,56 Z'); // Cambia a ícono de play
+                }
+            });
+        </script>
+
+        <!-- Sección de Tareas -->
+        <section class="tasks-section">
+            <h2>Available Tasks</h2>
+            <div class="task-grid">
+                <div class="task-card persona-card" data-persona="orpheus">
+                    <h3>Activity 1:</h3>
+                <p>True or false</p>
+                    <a href="t1.html" class="btn">Start</a>
+              
+                </div>
+                <div class="task-card persona-card" data-persona="izanagi">
+                    <h3>Activity 2: </h3>
+                    <p>True or false</p>
+                    <a href="t2.html" class="btn">Start</a>
+                  
+                </div>
+                <div class="task-card persona-card" data-persona="arsène">
+                    <h3>Activity3</h3>
+                       <p>Multiple option</p>
+                    <a href="t3.html" class="btn">Start</a>
+                   
+                </div>
+                <div class="task-card persona-card" data-persona="arsène">
+                    <h3>Activity4</h3>
+                    <p>Quiestions</p>
+                    <a href="t4.html" class="btn">Start</a>
+                  
+                </div>
+        </section>
+
+        <!-- Sección de Carga de Capturas de Puntuación -->
+        <section class="upload-section">
+            <h2>Upload Your Score Screenshots</h2>
+            <p>Click the link below to go to the upload page and submit your score screenshots.</p>
+            <a href="upload.html" class="btn">Upload Scores</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mama-Coco. All rights reserved.</p>
+    </footer>
+</body>
+</html>

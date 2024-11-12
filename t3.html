@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebQuest - Tasks 3</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+    <style>
+        .start-button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1d3557;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .start-btn, .cancel-btn, .submit-btn, .back-btn, .next-btn {
+            font-size: 24px;
+            padding: 15px 30px;
+            color: #ffffff;
+            background-color: #457b9d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .start-btn:hover, .cancel-btn:hover, .submit-btn:hover, .back-btn:hover, .next-btn:hover {
+            background-color: #a8dadc;
+        }
+
+        .timer {
+            font-size: 24px;
+            color: #ffffff;
+            margin: 0 20px;
+        }
+
+        .task-card {
+            display: none;
+        }
+
+        .quiz-container {
+            background-color: #53a7d5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            color: #ffffff;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            display: none; /* Hide results initially */
+        }
+
+        .back-btn, .next-btn, .submit-btn {
+            display: none; /* Hide buttons initially */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="WebQuest Logo" width="100px">
+            <h1>Scholarship Quest <br> Activity 3</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="introduction">
+            <center><h2>Welcome to Activity 3</h2></center>
+            <center><p>Good luck, remember time is limited.</p></center>
+        </section>
+
+        <div id="audio-player-container">
+            <p>Music for Activity</p>
+            <p id="pp">Because I Will Protect You</p>
+            <div id="play-button-container">
+                <button id="play-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40px" height="40px">
+                        <path id="play-path" d="M16,8 L56,32 L16,56 Z" fill="#ffffff"/> 
+                    </svg>
+                </button>
+            </div>
+            <audio id="audio" controls autoplay>
+                <source src="img/Because I Will Protect You - Persona 3 Reload OST.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <script>
+            document.getElementById('play-icon').addEventListener('click', function() {
+                const audio = document.getElementById('audio');
+                const playPath = document.getElementById('play-path');
+
+                if (audio.paused) {
+                    audio.play();
+                    playPath.setAttribute('d', 'M16,8 L16,56 L56,32 Z'); // Change to pause icon
+                } else {
+                    audio.pause();
+                    playPath.setAttribute('d', 'M16,8 L56,32 L16,56 Z'); // Change to play icon
+                }
+            });
+        </script>
+
+        <section class="tasks-section">
+            <h2>Multiple options <br>
+                When you click the start button, the tasks will be displayed, and at the end, when you submit the tasks, the countdown will stop, or you can stop it manually.
+            </h2>
+            <div class="start-button-container">
+                <button class="start-btn" onclick="startCounter()">Start</button>
+                <p class="timer" id="counter" style="display:none;">Timer: <span id="time">0</span> seconds</p>
+                <button class="cancel-btn" onclick="cancelCounter()">Cancel</button>
+            </div>
+            <div class="task-grid">
+                <div class="task-card persona-card" data-persona="orpheus">
+                    <h3>Activity 1:</h3>
+                    <div class="quiz-container" id="quiz1" style="display:none;">
+                        <h3>Quiz for Activity 1</h3>
+                        <p id="question1">1. Which country receives the most scholarships?</p>
+                        <input type="radio" id="option1a" name="question1" value="Spain">
+                        <label for="option1a">Spain</label><br>
+                        <input type="radio" id="option1b" name="question1" value="United States">
+                        <label for="option1b">United States</label><br>
+                        <input type="radio" id="option1c" name="question1" value="Uruguay">
+                        <label for="option1c">Uruguay</label><br>
+                        <p id="result1" class="result"></p>
+                    </div>
+                </div>
+                <div class="task-card persona-card" data-persona="izanagi">
+                    <h3>Activity 2:</h3>
+                    <div class="quiz-container" id="quiz2" style="display:none;">
+                        <h3>Quiz for Activity 2</h3>
+                        <p id="question2">2. What is renewable energy?</p>
+                        <input type="radio" id="option2a" name="question2" value="Energy from non-renewable sources">
+                        <label for="option2a">Energy from non-renewable sources</label><br>
+                        <input type="radio" id="option2b" name="question2" value="Energy from sustainable sources">
+                        <label for="option2b">Energy from sustainable sources</label><br>
+                        <input type="radio" id="option2c" name="question2" value="Energy from fossil fuels">
+                        <label for="option2c">Energy from fossil fuels</label><br>
+                        <p id="result2" class="result"></p>
+                    </div>
+                </div>
+            </div>
+            <button class="submit-btn" id="submit-btn" onclick="submitAnswers()">Submit</button>
+            <button class="back-btn" id="back-btn" onclick="goBack()">Go back</button>
+            <button class="next-btn" id="next-btn" onclick="goToNext()">Next Task</button>
+        </section>
+
+        <section class="upload-section">
+            <h2>Upload Your Score Screenshots</h2>
+            <p>Click the link below to go to the upload page and submit your score screenshots.</p>
+            <a href="upload.html" class="btn">Upload Scores</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mama-Coco. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let timer;
+        let seconds = 0;
+
+        function startCounter() {
+            document.getElementById('counter').style.display = 'block';
+            document.querySelectorAll('.task-card').forEach((card, index) => {
+                card.style.display = 'block'; // Show tasks
+                document.getElementById(`quiz${index + 1}`).style.display = 'block'; // Show quizzes
+            });
+            timer = setInterval(function() {
+                seconds++;
+                document.getElementById('time').textContent = seconds;
+            }, 1000);
+            document.getElementById('submit-btn').style.display = 'block'; // Show submit button
+        }
+
+        function cancelCounter() {
+            clearInterval(timer);
+            seconds = 0;
+            document.getElementById('time').textContent = seconds;
+            document.getElementById('counter').style.display = 'none';
+            document.querySelectorAll('.task-card').forEach(card => {
+                card.style.display = 'none'; // Hide tasks if canceled
+                const quizContainer = document.getElementById(`quiz${card.dataset.persona === 'orpheus' ? '1' : '2'}`);
+                quizContainer.style.display = 'none'; // Hide quizzes
+            });
+            document.getElementById('submit-btn').style.display = 'none'; // Hide submit button
+        }
+
+        function submitAnswers() {
+            clearInterval(timer);
+
+            // Check answers for quiz 1
+            const answer1 = document.querySelector('input[name="question1"]:checked');
+            if (answer1) {
+                if (answer1.value === 'Spain') {
+                    answer1.parentNode.style.color = 'green'; // Correct answer
+                } else {
+                    answer1.parentNode.style.color = 'red'; // Incorrect answer
+                }
+            }
+
+            // Check answers for quiz 2
+            const answer2 = document.querySelector('input[name="question2"]:checked');
+            if (answer2) {
+                if (answer2.value === 'Energy from sustainable sources') {
+                    answer2.parentNode.style.color = 'green'; // Correct answer
+                } else {
+                    answer2.parentNode.style.color = 'red'; // Incorrect answer
+                }
+            }
+
+            document.getElementById('back-btn').style.display = 'block'; // Show back button
+            document.getElementById('next-btn').style.display = 'block'; // Show next button
+        }
+
+        function goBack() {
+            window.location.href = "act.html"; // Redirect to act.html
+        }
+
+        function goToNext() {
+            window.location.href = "t4.html"; // Redirect to t4.html
+        }
+    </script>
+</body>
+</html>

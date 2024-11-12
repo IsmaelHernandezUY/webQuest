@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebQuest - Activity 1: Research Scholarships</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+        <img src="img/logo.png" alt="WebQuest Logo" width="100px">
+        <h1>Activity 1: Research Scholarships</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="proceso.html">Process</a></li>
+                <li><a href="recursos.html">Resources</a></li>
+                <li><a href="evaluacion.html">Evaluation</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="introduction">
+            <h2>Instructions</h2>
+            <p>Research the following types of scholarships and fill in their descriptions:</p>
+            <ul>
+                <li>Merit-based scholarships: <input type="text" id="merit-based"></li>
+                <li>Need-based scholarships: <input type="text" id="need-based"></li>
+                <li>Sports scholarships: <input type="text" id="sports"></li>
+            </ul>
+            <button onclick="evaluateActivity()">Submit answers</button>
+            <button onclick="resetScore()">Reset Score</button>
+            <p id="current-score">Total score: 0</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Mama-Coco. All rights reserved.</p>
+    </footer>
+</body>
+</html>

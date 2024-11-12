@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebQuest - Final Evaluation</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+        <img src="img/logo.png" alt="WebQuest Logo" class="logo" width="100px">
+        <h1>Scholarship Evaluation</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="proceso.html">Process</a></li>
+                <li><a href="recursos.html">Resources</a></li>
+                <li><a href="evaluacion.html">Evaluation</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="introduction">
+            <h2>Final Evaluation</h2>
+            <p id="final-score">Total accumulated score: 0</p>
+            <form onsubmit="submitData(event)" style="margin-bottom:1%">
+                <label for="question1">1. What types of scholarships did you find most suitable for your needs?</label>
+                <textarea id="question1" name="question1" rows="4" cols="50"></textarea><br><br>
+
+                <label for="question2">2. How will you apply the strategies you learned to successfully secure a scholarship?</label>
+                <textarea id="question2" name="question2" rows="4" cols="50"></textarea><br><br>
+
+                <input type="submit" value="Submit Evaluation" class="btn submit-btn btn3">
+            </form>
+            <button onclick="resetScore()" class="btn reset-btn">Reset Score</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mama-Coco. All rights reserved.</p>
+    </footer>
+</body>
+</html>
